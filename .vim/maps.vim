@@ -12,6 +12,10 @@ nnoremap <Leader>< 10<C-w><
 " quick semi
 nnoremap <Leader>; $a;<Esc>
 
+" add 'word'
+nnoremap <leader>q' ciw''<Esc>P
+nnoremap <leader>q" ciw""<Esc>P
+
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 " shorter commands
@@ -19,6 +23,7 @@ cnoreabbrev tree NERDTreeToggle
 cnoreabbrev blame Gblame
 cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff
+
 
 " plugs
 map <Leader>nt :NERDTreeFind<CR>
@@ -60,6 +65,7 @@ nmap <Leader>s <Plug>(easymotion-s2)
 nnoremap <Leader>G :G<cr>
 nnoremap <Leader>gp :Gpush<cr>
 nnoremap <Leader>gl :Gpull<cr>
+nnoremap <Leader>sg :<C-u>call gitblame#echo()<CR>
 
 " run current file
 nnoremap <Leader>x :!node %<cr>

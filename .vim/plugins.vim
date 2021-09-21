@@ -46,7 +46,7 @@ Plug 'scrooloose/nerdcommenter'
 
 " git
 Plug 'tpope/vim-fugitive'
-
+Plug 'zivyangll/git-blame.vim'
 Plug 'tpope/vim-repeat'
 
 call plug#end()
