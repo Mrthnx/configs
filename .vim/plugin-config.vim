@@ -34,6 +34,12 @@ let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
 "let NERDTreeMapOpenInTab='\t'
 
+" loading the plugin
+"let g:webdevicons_enable = 1
+
+" adding the flags to NERDTree
+"let g:webdevicons_enable_nerdtree = 1
+
 let g:javascript_plugin_flow = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
