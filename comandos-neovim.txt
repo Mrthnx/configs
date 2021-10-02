@@ -1,0 +1,91 @@
+================
+Guardar y cerrar
+================
+:w – Permite guardar el fichero.
+:q – Salir de Vim. Si el fichero ha sido modificado pero no se ha guardado, nos advertirá y no podremos salir de Vim usando este comando.
+:q! – Salir de Vim, descartando posibles cambios no guardados que se hayan realizado en el fichero.
+:wq – Hace el guardado del archivo y después sale de Vim.
+
+==================
+Deshacer y rehacer
+==================
+u – Deshacer acción.
+Ctrl+r – Rehacer una acción.
+
+=====================
+Comentar codigo
+=====================
+leader cl comentar
+leader cu descomentar
+
+======================
+Moverse por el fichero
+======================
+Además de usar los cursores para movernos por el archivo, podemos movernos de una manera más rápida con algunos comandos:
+h ( back ) j ( down ) k ( up ) l ( next )
+w = siguiente palabra
+e = final de palabra
+b = inicio de palabra
+gg – Ponerse al inicio del fichero.
+Mayús+g – Ir a la última línea del fichero.
+Num+G – Ir a una línea determinada. Por ejemplo 14G llevaría el cursor a la línea 14.
+:set number – Hace que el editor muestre el número de las líneas.
+$ – Ir al final de la línea.
+0 – Ir al principio de la línea.
+Ctrl + o - regresar a la posicion anterior
+Ctrl + i - continuar con la siguiente posicion
+
+===========================================
+Borrar líneas ( en realidad solo cortamos )
+===========================================
+dd – El comando permite borrar la línea actual, donde está el cursor.
+d+num – Este comando permite borrar un número de líneas. Por ejemplo, d3 borrará tres líneas.
+
+=========================
+Cortar palabra
+=========================
+cw = cortar palabra de la posicion hacia delante
+ciw = cortar toda la palabra
+
+========================
+copiar
+========================
+y - copiar la palabra
+
+======================
+seleccionar
+=====================
+v - selecciona palabra // podemos usar direccionar o atajos para mejorar
+
+==================================
+ci comentar y descomentar codigo
+
+==================================
+:vs abrir duplicado de vista actual
+
+===================================
+Crear nueva linea
+===================================
+o = crear la linea debajo del cursor
+O = crear la linea arriba del cursor
+Ctrl + o - regresar a la anterior posicion
+Ctrl + i - continuar con la siguiente posicion
+=============
+Pegar lineas 
+============
+P => arriba del cursor
+p => abajo del cursor
+
+=========================
+Reemplazar la palabra 
+=========================
+:%s/palabra_a_buscar/palabra_a_reemplazar 
+:%s/palabra_a_buscar/palabra_a_reemplazar/c   Para confirmar el reemplazo
+
+======
+Buscar
+======
+Vim tiene unas herramientas muy potentes para buscar texto en los archivos. Los comandos más útiles son los siguientes:
+
+/+texto – Al pulsar «/» se abre la función de búsqueda. Entonces podremos escribir el texto que queremos buscar. El editor resaltará todas las apariciones de este texto. Pulsamos enter y nos llevará a la siguiente aparición de la búsqueda, con respecto a la posición de nuestro cursor.
+n y N – Una vez hemos aceptada una búsqueda, el comando n nos lleva a la siguiente aparición de la cadena buscada. El comando N nos llevará a la anterior. 
