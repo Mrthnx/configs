@@ -65,7 +65,7 @@ nmap <Leader>s <Plug>(easymotion-s2)
 nnoremap <Leader>G :G<cr>
 nnoremap <Leader>gp :Gpush<cr>
 nnoremap <Leader>gl :Gpull<cr>
-nnoremap <Leader>sg :<C-u>call gitblame#echo()<CR>
+nnoremap <Leader>gc :<C-u>call gitblame#echo()<CR>
 
 " run current file
 nnoremap <Leader>x :!node %<cr>

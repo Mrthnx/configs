@@ -11,9 +11,10 @@ Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 " Themes
-Plug 'morhetz/gruvbox'
-Plug 'shinchu/lightline-gruvbox.vim'
+"Plug 'morhetz/gruvbox'
+"Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'marko-cerovac/material.nvim'
 
 " Tree
 Plug 'scrooloose/nerdtree'
@@ -45,6 +46,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdcommenter'
+
+" DEFINETIONS PREVIEW
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'glepnir/lspsaga.nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
