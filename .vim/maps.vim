@@ -16,6 +16,9 @@ nnoremap <Leader>; $a;<Esc>
 nnoremap <leader>q' ciw''<Esc>P
 nnoremap <leader>q" ciw""<Esc>P
 
+" copy word
+nnoremap <leader>cp ciw<Esc>u 
+
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 " shorter commands
