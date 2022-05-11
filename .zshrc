@@ -2,9 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mrthnx/.oh-my-zsh"
+export ZSH="/home/mrthnx96/.oh-my-zsh"
 
-export DENO_INSTALL="/home/mrthnx/.deno"
+export DENO_INSTALL="/home/mrthnx96/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Alias para NEOVIM
@@ -12,14 +12,12 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 alias zshconfig="nvim ~/.zshrc"
 alias nvconfig="nvim ~/.vimrc"
 alias ngxconfig="nvim /etc/nginx/conf.d/default.conf"
-
+alias dev-corelusa="cd ~/Developers/Corelusa"
+alias dev-multiplica="cd ~/Developers/Multiplica"
+alias dev-personal="cd ~/Developers/Personal"
 
 alias v=openNvim
 alias guc="git reset --soft HEAD~"
-
-# NVM configuration
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 
 if [ -f ~/.myenvs ]; then
     source ~/.myenvs
@@ -39,9 +37,6 @@ function openNvim {
 export PATH="$PATH:$HOME/.rvm/bin"
 export GIT_EDITOR=nvim
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -158,3 +153,6 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/mrthnx96/.zprofile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

@@ -48,6 +48,11 @@ cw = cortar palabra de la posicion hacia delante
 ciw = cortar toda la palabra
 
 ========================
+Envolver palabra con caracter
+========================
+cmd seleccionar + S + caracter
+
+========================
 copiar
 ========================
 y - copiar la palabra

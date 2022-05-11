@@ -17,7 +17,7 @@ nnoremap <leader>q' ciw''<Esc>P
 nnoremap <leader>q" ciw""<Esc>P
 
 " copy word
-nnoremap <leader>cp ciw<Esc>u 
+nnoremap <leader>cp ciw<Esc>u
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
@@ -41,13 +41,15 @@ nnoremap <silent> <Leader><C-l> :TmuxNavigateRight<cr>
 
 " Use <c-space> to trigger completion.
 "inoremap <silent><expr> <c-space> coc#refresh()
- 
+
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Remap surround to lowercase s so it does not add an empty space
+xmap s <Plug>VSurround
 " diagnostics
 nnoremap <leader>kp :let @*=expand("%")<CR>
 
@@ -73,12 +75,7 @@ nnoremap <Leader>gc :<C-u>call gitblame#echo()<CR>
 " run current file
 nnoremap <Leader>x :!node %<cr>
 
-" Use <c-space> to trigger completion.
-if &filetype == "javascript" || &filetype == "python"
-  inoremap <c-space> <C-x><C-u>
-else
-  inoremap <silent><expr> <c-space> coc#refresh()
-endif
+inoremap <silent><expr> <c-space> coc#refresh()
 
 
 set splitright
@@ -116,3 +113,142 @@ function! OpenTerminal()
   endif
 endfunction
 nnoremap <C-t> :call OpenTerminal()<CR>
+
+inoremap <expr> <CR> ParensIndent()
+
+function! ParensIndent()
+  let prev = col('.') - 1
+  let after = col('.')
+  let prevChar = matchstr(getline('.'), '\%' . prev . 'c.')
+  let afterChar = matchstr(getline('.'), '\%' . after . 'c.')
+  if (prevChar == '"' && afterChar == '"') ||
+\    (prevChar == "'" && afterChar == "'") ||
+\    (prevChar == "(" && afterChar == ")") ||
+\    (prevChar == "{" && afterChar == "}") ||
+\    (prevChar == "[" && afterChar == "]")
+    return "\<CR>\<ESC>O"
+  endif
+
+  return "\<CR>"
+endfunction
+
+inoremap <expr> <space> ParensSpacing()
+
+function! ParensSpacing()
+  let prev = col('.') - 1
+  let after = col('.')
+  let prevChar = matchstr(getline('.'), '\%' . prev . 'c.')
+  let afterChar = matchstr(getline('.'), '\%' . after . 'c.')
+  if (prevChar == '"' && afterChar == '"') ||
+\    (prevChar == "'" && afterChar == "'") ||
+\    (prevChar == "(" && afterChar == ")") ||
+\    (prevChar == "{" && afterChar == "}") ||
+\    (prevChar == "[" && afterChar == "]")
+    return "\<space>\<space>\<left>"
+  endif
+
+  return "\<space>"
+endfunction
+
+inoremap <expr> <BS> ParensRemoveSpacing()
+
+function! ParensRemoveSpacing()
+  let prev = col('.') - 1
+  let after = col('.')
+  let prevChar = matchstr(getline('.'), '\%' . prev . 'c.')
+  let afterChar = matchstr(getline('.'), '\%' . after . 'c.')
+
+  if (prevChar == '"' && afterChar == '"') ||
+\    (prevChar == "'" && afterChar == "'") ||
+\    (prevChar == "(" && afterChar == ")") ||
+\    (prevChar == "{" && afterChar == "}") ||
+\    (prevChar == "[" && afterChar == "]")
+    return "\<bs>\<right>\<bs>"
+  endif
+
+  if (prevChar == ' ' && afterChar == ' ')
+    let prev = col('.') - 2
+    let after = col('.') + 1
+    let prevChar = matchstr(getline('.'), '\%' . prev . 'c.')
+    let afterChar = matchstr(getline('.'), '\%' . after . 'c.')
+    if (prevChar == '"' && afterChar == '"') ||
+  \    (prevChar == "'" && afterChar == "'") ||
+  \    (prevChar == "(" && afterChar == ")") ||
+  \    (prevChar == "{" && afterChar == "}") ||
+  \    (prevChar == "[" && afterChar == "]")
+      return "\<bs>\<right>\<bs>"
+    endif
+  endif
+
+  return "\<bs>"
+endfunction
+
+inoremap { {}<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap ' ''<left>
+inoremap " ""<left>
+
+let curly = "}"
+inoremap <expr> } CheckNextParens(curly)
+
+let bracket = "]"
+inoremap <expr> ] CheckNextParens(bracket)
+
+let parens = ")"
+inoremap <expr> ) CheckNextParens(parens)
+
+let quote = "'"
+inoremap <expr> ' CheckNextQuote(quote)
+
+let dquote = '"'
+inoremap <expr> " CheckNextQuote(dquote)
+
+let bticks = '`'
+inoremap <expr> ` CheckNextQuote(bticks)
+
+function CheckNextQuote(c)
+  let after = col('.')
+  let afterChar = matchstr(getline('.'), '\%' . after . 'c.')
+
+  if (afterChar == a:c)
+    return "\<right>"
+  endif
+  if (afterChar == ' ' || afterChar == '' || afterChar == ')' || afterChar== '}' || afterChar == ']')
+    return a:c . a:c . "\<left>"
+  endif
+  if (afterChar != a:c)
+    let bticks = '`'
+    ""let dquote = '"'
+    let quote = "'"
+    if(afterChar == dquote || afterChar == quote || afterChar == bticks)
+      return a:c . a:c . "\<left>"
+    endif
+  endif
+  return a:c
+endfunction
+
+function CheckNextParens(c)
+  let after = col('.')
+  let afterChar = matchstr(getline('.'), '\%' . after . 'c.')
+  if (afterChar == a:c)
+
+    return "\<right>"
+  endif
+  return a:c
+endfunction
+
+augroup AuBufWritePre
+  autocmd!
+  autocmd BufWritePre * let current_pos = getpos(".")
+  autocmd BufWritePre * silent! undojoin | %s/\s\+$//e
+  autocmd BufWritePre * silent! undojoin | %s/\n\+\%$//e
+  autocmd BufWritePre * call setpos(".", current_pos)
+  autocmd BufWritePre,FileWritePre * silent! call mkdir(expand('<afile>:p:h'), 'p')
+augroup END
+
+augroup auYank
+  autocmd!
+  autocmd TextYankPost *
+    \ lua vim.highlight.on_yank{higroup="IncSearch", timeout=400, on_visual=true}
+augroup  END

@@ -2,17 +2,16 @@ call plug#begin('~/.vim/plugged')
 
 " syntax
 Plug 'sheerun/vim-polyglot'
-"Plug 'HerringtonDarkholme/yats.vim'
-"Plug 'yuezk/vim-js'
-"Plug 'flowtype/vim-flow'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'norcalli/nvim-colorizer.lua'
 
 " status bar
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 " Themes
-"Plug 'morhetz/gruvbox'
-"Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'morhetz/gruvbox'
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'marko-cerovac/material.nvim'
 
@@ -21,12 +20,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " typing
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 
 " tmux
-"Plug 'benmills/vimux'
+Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 
 " autocomplete
@@ -47,9 +46,9 @@ Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdcommenter'
 
-" DEFINETIONS PREVIEW
-"Plug 'neovim/nvim-lspconfig'
-"Plug 'glepnir/lspsaga.nvim'
+ "DEFINETIONS PREVIEW
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 
 " git
 Plug 'tpope/vim-fugitive'
