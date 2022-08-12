@@ -218,9 +218,9 @@ function CheckNextQuote(c)
     return a:c . a:c . "\<left>"
   endif
   if (afterChar != a:c)
-    let bticks = '`'
+    "let bticks = '`'
     ""let dquote = '"'
-    let quote = "'"
+    "let quote = "'"
     if(afterChar == dquote || afterChar == quote || afterChar == bticks)
       return a:c . a:c . "\<left>"
     endif

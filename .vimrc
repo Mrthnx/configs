@@ -17,7 +17,7 @@ so ~/.vim/maps.vim
 
 colorscheme gruvbox
 
-
+map <Leader>F :call fzf#vim#ag(expand('<cword>'))<kEnter>
 "let g:material_style = 'darker'
 "colorscheme material
 

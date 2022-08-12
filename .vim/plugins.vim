@@ -49,6 +49,10 @@ Plug 'scrooloose/nerdcommenter'
  "DEFINETIONS PREVIEW
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'honza/vim-snippets'
+
+"HBS
+Plug 'joukevandermaas/vim-ember-hbs'
 
 " git
 Plug 'tpope/vim-fugitive'
