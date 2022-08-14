@@ -1,4 +1,17 @@
 ================
+Config .zsh
+
+alias nvconfig="nvim ~/.vimrc"
+alias v=openNvim
+function openNvim {
+  if [ $# -eq 0 ]; then
+    nvim ./
+  else
+    nvim $1
+  fi
+}
+
+================
 Guardar y cerrar
 ================
 :w – Permite guardar el fichero.
@@ -76,15 +89,15 @@ O = crear la linea arriba del cursor
 Ctrl + o - regresar a la anterior posicion
 Ctrl + i - continuar con la siguiente posicion
 =============
-Pegar lineas 
+Pegar lineas
 ============
 P => arriba del cursor
 p => abajo del cursor
 
 =========================
-Reemplazar la palabra 
+Reemplazar la palabra
 =========================
-:%s/palabra_a_buscar/palabra_a_reemplazar 
+:%s/palabra_a_buscar/palabra_a_reemplazar
 :%s/palabra_a_buscar/palabra_a_reemplazar/c   Para confirmar el reemplazo
 
 ======
@@ -93,4 +106,4 @@ Buscar
 Vim tiene unas herramientas muy potentes para buscar texto en los archivos. Los comandos más útiles son los siguientes:
 
 /+texto – Al pulsar «/» se abre la función de búsqueda. Entonces podremos escribir el texto que queremos buscar. El editor resaltará todas las apariciones de este texto. Pulsamos enter y nos llevará a la siguiente aparición de la búsqueda, con respecto a la posición de nuestro cursor.
-n y N – Una vez hemos aceptada una búsqueda, el comando n nos lleva a la siguiente aparición de la cadena buscada. El comando N nos llevará a la anterior. 
+n y N – Una vez hemos aceptada una búsqueda, el comando n nos lleva a la siguiente aparición de la cadena buscada. El comando N nos llevará a la anterior.
