@@ -1,4 +1,20 @@
 ================
+Install
+https://github.com/neovim/neovim/wiki/Installing-Neovim
+
+ln -s <repositorio>/init.vim ~/.config/nvim/init.vim
+ln -s <repositorio>/.vimrc ~/.vimrc
+ln -s <repositorio>/.vim ~/.vim
+nvim ~/.vimrc => :PlugInstall
+
+sudo apt install tmux !! plugin in library used
+
+!! neovim version > 0.4.0 need nodejs version > 14.0.0
+
+================
+Install node 16 in tar.xz
+https://stackoverflow.com/questions/63312642/how-to-install-node-tar-xz-file-in-linux
+
 Config .zsh
 
 alias nvconfig="nvim ~/.vimrc"
